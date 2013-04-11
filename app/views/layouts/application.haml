@@ -6,16 +6,28 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    %h1 My Awesome Site, Dude.
-    -if current_user
-      =link_to "Log out", log_out_path
-    -else
-      =link_to "Sign up", sign_up_path
-      =link_to "Log in", log_in_path
-    -if flash[:notice]
-      .notice
-        =flash[:notice]
-    -if flash[:alert]
-      .alert
-        =flash[:alert]
-    = yield
+    .navbar
+      .navbar-inner
+        %a.brand{:href => "/"} FakeTwitter &copy;
+        %ul.nav
+          -if current_user
+            %li
+              =link_to "Profile", user_path(current_user)
+            %li
+              =link_to "Users", users_path
+            %li
+              =link_to "Log out", log_out_path
+          -else
+            %li
+              =link_to "Sign up", sign_up_path
+            %li
+              =link_to "Log in", log_in_path
+    .row
+      .span10.offset1
+        -if flash[:notice]
+          .notice
+            =flash[:notice]
+        -if flash[:alert]
+          .alert
+            =flash[:alert]
+        = yield

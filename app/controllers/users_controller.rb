@@ -14,4 +14,26 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(params[:user])
+      flash[:notice] = "User updated successfully."
+    else
+      flash[:alert] = "User could not be updated."
+    end
+    redirect_to edit_user_path(params[:id])
+  end
+
+  def index
+    @users = User.all
+  end
+
 end

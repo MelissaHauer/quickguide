@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130409231255) do
+ActiveRecord::Schema.define(:version => 20130411233043) do
+
+  create_table "tweets", :force => true do |t|
+    t.text     "text"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email"
@@ -19,6 +26,11 @@ ActiveRecord::Schema.define(:version => 20130409231255) do
     t.string   "password_salt"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "username"
+    t.string   "location"
+    t.text     "bio"
   end
 
 end

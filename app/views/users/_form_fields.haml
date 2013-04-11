@@ -1,0 +1,26 @@
+=form_for @user do |f|
+  -if @user.errors.any?
+    .error_messages
+      %h2 Form is invalid
+      %ul
+        -for message in @user.errors.full_messages
+          %li
+            =message
+  =f.label :email
+  =f.text_field :email
+  =f.label :password
+  =f.password_field :password
+  =f.label :password_confirmation
+  =f.password_field :password_confirmation
+  =f.label :first_name
+  =f.text_field :first_name
+  =f.label :last_name
+  =f.text_field :last_name
+  =f.label :bio
+  =f.text_area :bio, :style => "width: 400px; height: 200px;"
+  =f.label :username
+  =f.text_field :username
+  =f.label :location
+  =f.text_field :location
+  %br
+  %input{:name => "commit", :type => "submit", :value => "Submit", :class => "btm btn-success"}

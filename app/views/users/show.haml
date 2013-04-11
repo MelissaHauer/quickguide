@@ -1,0 +1,7 @@
+%h1 
+  ="#{@user.first_name} #{@user.last_name}"
+%h3
+  =@user.bio if !@user.bio.nil?
+="@" + @user.username
+%br
+=@user.location
