@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %title Myauth
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    %h1 My Awesome Site, Dude.
+    -if current_user
+      =link_to "Log out", log_out_path
+    -else
+      =link_to "Sign up", sign_up_path
+      =link_to "Log in", log_in_path
+    -if flash[:notice]
+      .notice
+        =flash[:notice]
+    -if flash[:alert]
+      .alert
+        =flash[:alert]
+    = yield
