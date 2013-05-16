@@ -227,7 +227,7 @@ body {
   font-size: 14px;
   line-height: 20px;
   color: #333333;
-  background-color: #ffffff;
+  background:url("ingredient2.jpg");
 }
 
 a {
@@ -764,11 +764,11 @@ h3 {
 }
 
 h1 {
-  font-size: 38.5px;
+  font-size: 45px;
 }
 
 h2 {
-  font-size: 31.5px;
+  font-size: 38.5px;
 }
 
 h3 {
@@ -4356,7 +4356,7 @@ input[type="submit"].btn.btn-mini {
 .navbar {
   *position: relative;
   *z-index: 2;
-  margin-bottom: 20px;
+ 
   overflow: visible;
 }
 

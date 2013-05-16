@@ -1,3 +1,4 @@
+.profile
 %h1 
   ="#{@user.first_name} #{@user.last_name}"
 %h3
@@ -5,3 +6,10 @@
 ="@" + @user.username
 %br
 =@user.location
+%h3 Comments
+-@user.comments.each do |comment|
+  =comment.comment
+  %br
+  .temp-div{:style => "font-size: 11px"}
+    =comment.created_at
+  %br

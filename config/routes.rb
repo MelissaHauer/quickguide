@@ -3,8 +3,13 @@ Myauth::Application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
   root :to => "home#index"
-  resources :users
+  resources :users do
+    resources :comments
+  end
   resources :sessions
+
+  resources :ingredient
+  post "search" => "ingredient#search"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

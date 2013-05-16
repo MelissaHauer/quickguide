@@ -1,0 +1,21 @@
+%h1.title 
+	=@ingredient.name
+
+=@ingredient.description
+%br
+%br
+
+
+%br
+-if current_user
+	=render "comments/comment_form"
+%br
+%br
+-@ingredient.comments.each do |comment|
+	.temp-div{:style => "font-size: 20px"}
+		=link_to comment.user.username, "/"
+	=comment.comment
+	%br
+	=comment.created_at
+	%br
+	%br

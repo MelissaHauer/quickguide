@@ -1,33 +1,42 @@
 !!!
 %html
   %head
-    %title Myauth
+    %title Quick Guide
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
+
   %body
     .navbar
       .navbar-inner
-        %a.brand{:href => "/"} FakeTwitter &copy;
-        %ul.nav
-          -if current_user
-            %li
-              =link_to "Profile", user_path(current_user)
-            %li
-              =link_to "Users", users_path
-            %li
-              =link_to "Log out", log_out_path
-          -else
-            %li
-              =link_to "Sign up", sign_up_path
-            %li
-              =link_to "Log in", log_in_path
-    .row
-      .span10.offset1
-        -if flash[:notice]
-          .notice
-            =flash[:notice]
-        -if flash[:alert]
-          .alert
-            =flash[:alert]
-        = yield
+        .container
+          %a.brand{:href => "/"} The Quick Guide
+          %ul.nav
+            -if current_user
+              
+              %li
+                =link_to "List A-Z", ingredient_index_path
+              %li
+                =link_to "Log out", log_out_path
+            -else
+              %li
+                =link_to "List A-Z", ingredient_index_path
+              %li
+                =link_to "Sign up", sign_up_path
+              %li
+            
+          =form_tag "/search", :class => "navbar-form pull-right" do
+            =text_field_tag "search", nil, :placeholder => "Enter your search here"
+            =submit_tag "Submit", :class => "btn" 
+    .maincontainer        
+      .row
+        .span100.offset0
+          -if flash[:notice]
+            .notice
+              =flash[:notice]
+          -if flash[:alert]
+            .alert
+              =flash[:alert]
+      %br
+      %br        
+      = yield

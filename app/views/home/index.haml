@@ -1,2 +1,50 @@
-%h1 Welcome to FakeTwitter &copy;.
-Anything is possible! User your imagination to post 140 character status updates.
+.container
+%h3 Welcome to...
+%h1.title The Quick Guide to Ingredient Labels
+%br
+%br
+
+.searchbg
+  .home-search
+    =form_tag "/search" do
+      =text_field_tag "search", nil, :placeholder => "Enter your search here"
+      =submit_tag "Submit", :class => "btn"
+
+
+-if !current_user
+  .home-login
+  %h2 Log in
+  =form_tag sessions_path do
+    =label_tag :email
+    =text_field_tag :email, params[:email], :placeholder => "enter your email"
+    =label_tag :password
+    =password_field_tag :password
+    %br
+    =submit_tag "Log in", :class => "btn btn-success"
+-else
+  -@user = current_user
+  .profile
+    %h1 
+      ="#{@user.first_name} #{@user.last_name}"
+    %h3
+      =@user.bio if !@user.bio.nil?
+    ="@" + @user.username
+    %br
+    =@user.location
+    %br
+    %br
+    %br
+    %br
+    %h3 Comments
+    %br
+    -@user.comments.each do |comment|
+      .temp-div{:style => "font-size: 25px"}
+        =link_to comment.ingredient.name, ingredient_path(comment)
+  
+      .temp-div{:style => "font-size: 15px"}
+        =comment.comment
+     
+      .temp-div{:style => "font-size: 11px"}
+        =comment.created_at
+      %br
+      %br

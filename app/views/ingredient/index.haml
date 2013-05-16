@@ -1,0 +1,16 @@
+%h2 Ingredients A-Z
+%br
+%br
+
+-@ingredients.each do |ingredient|
+	.temp-div{:style => "font-size: 25px"}
+		=link_to ingredient.name, ingredient_path(ingredient)
+	%br
+	=ingredient.description
+	%br
+	-if ingredient.rating
+		Good
+	-else
+		Bad
+	%br
+	%br

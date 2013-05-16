@@ -1,0 +1,14 @@
+%h3 New Comment
+=form_for @comment, :url => user_comments_path(current_user) do |f|
+  -if @comment.errors.any?
+    .error_messages
+      %h2 Form is invalid
+      %ul
+        -for message in @user.errors.full_messages
+          %li
+            =message
+  =f.label :comment
+  =f.text_area :comment 
+  =f.hidden_field :ingredient_id, :value => params[:id]
+  %br
+  =f.submit

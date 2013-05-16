@@ -1,0 +1,19 @@
+%h1 Ingredients
+%br
+%br
+
+-if @ingredients.empty?
+	No Results Found
+-else 
+	-@ingredients.each do |ingredient|
+		.temp-div{:style => "font-size: 25px"}
+			=link_to ingredient.name, ingredient_path(ingredient)
+		%br
+		=ingredient.description
+		%br
+		-if ingredient.rating
+			Good
+		-else
+			Bad
+		%br
+		%br
